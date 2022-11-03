@@ -1,0 +1,93 @@
+.content__register {
+  padding-top: 80px;
+}
+.content__register--title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #221f20;
+  text-align: center;
+  padding: 24px 0 8px;
+}
+.content__register--form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.content__register--form__infor {
+  padding: 0 15px;
+  width: 50%;
+}
+.content__register--form__infor--title {
+  margin-bottom: 10px;
+  color: #221f20;
+  font-size: 16px;
+  padding: 0 15px;
+}
+.content__register--form__infor .customer__infor--row {
+  display: flex;
+  width: 100%;
+}
+.content__register--form__infor .customer__infor--row--item {
+  width: 50%;
+  padding: 0 15px;
+  margin-bottom: 16px;
+}
+.content__register--form__infor .customer__infor--row--item span {
+  color: red;
+}
+.content__register--form__infor .customer__infor--row--item input {
+  width: 100%;
+  border: 1px solid #E7E8E9;
+  border-radius: 4px;
+  padding: 15px;
+  font-size: 14px;
+  color: #57585A;
+  margin-top: 3px;
+}
+.content__register--form__infor .customer__infor--row--item select {
+  width: 100%;
+  appearance: none;
+  background-size: 16px;
+  background-position-x: calc(100% - 20px);
+  background-position-y: center;
+  background-repeat: no-repeat;
+  padding: 0px 16px;
+  border: 1px solid #E7E8E9;
+  color: #57585A;
+  outline: none;
+  border-radius: 4px;
+  margin-top: 3px;
+  height: 48px;
+}
+.content__register--form__infor .customer__infor--row--item select option {
+  color: #57585A;
+  width: 100%;
+  padding: 0px 16px;
+}
+.content__register--form__infor .customer__infor--row--box {
+  padding: 0 15px;
+  margin-bottom: 4px;
+}
+.content__register--form__infor .customer__infor--row--box a {
+  color: red;
+}
+.content__register--form--submitBtn {
+  width: calc(100% - 30px);
+  margin-top: 15px;
+  padding: 12px 24px;
+  border-radius: 16px 0px;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: #221f20;
+  color: #f7f8f9;
+  border: 1px solid transparent;
+  transform: translateX(15px);
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=register.css.map */
