@@ -29,6 +29,9 @@
   line-height: 26px;
   cursor: pointer;
 }
+.header__navBar__item a {
+  color: #1a1818;
+}
 .header__navBar__item--popup {
   position: absolute;
   width: max-content;
@@ -248,13 +251,13 @@
   color: #6C6D70;
   padding: 4px 0;
 }
-.content .trending__tab .active {
+.content .trending__tab > .active {
   border-bottom: 2px solid black;
   color: #1a1818;
 }
 .content .trending__list {
   margin-top: 28px;
-  display: flex;
+  display: none;
   gap: 30px;
 }
 .content .trending__list--item {
@@ -310,6 +313,9 @@
   background-color: white;
   color: #292525;
 }
+.content .trending__list.active {
+  display: flex;
+}
 .content .trending__button {
   text-align: center;
   color: #221F20;
@@ -320,6 +326,9 @@
   background-color: white;
   margin-top: 24px;
   transition: 0.5s;
+}
+.content .trending__button a {
+  color: #221F20;
 }
 .content .trending__button:hover {
   color: white;

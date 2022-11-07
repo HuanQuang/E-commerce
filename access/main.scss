@@ -25,6 +25,9 @@
             font-weight: 600;
             line-height: 26px;
             cursor: pointer;
+            a {
+            color: #1a1818;
+            }
             &--popup {
                 position: absolute;
                 width: max-content;
@@ -251,14 +254,14 @@
                 color: #6C6D70;
                 padding: 4px 0 ;
             }
-            .active {
+            > .active {
                 border-bottom: 2px solid black;
                 color: #1a1818;
             }
         }
         &__list {
             margin-top: 28px;
-            display: flex;
+            display: none;
             gap: 30px;
             &--item {
                 width: 20%;
@@ -313,7 +316,11 @@
                     }
                 }
             }
+            &.active {
+                display: flex;
+            }
         }
+        
         &__button {
             text-align: center;
             color: #221F20;
@@ -324,6 +331,9 @@
             background-color: white;
             margin-top: 24px;
             transition: 0.5s;
+            a {
+                color: #221F20;
+            }
             &:hover {
                 color: white;
                 background-color: #1a1818;

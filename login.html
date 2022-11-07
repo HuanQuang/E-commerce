@@ -17,7 +17,7 @@
     <div class="container">
         <Header class="header">
             <ul class="header__navBar">
-                <li class="header__navBar__item">NAM
+                <li class="header__navBar__item"><a href="./category.html">NAM</a>
                     <div class="header__navBar__item--popup">
                         <div class="popup__category">
                             <h3>METAGEN</h3>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="header__navBar__item">NỮ
+                <li class="header__navBar__item"><a href="./category.html">NỮ</a>
                     <div class="header__navBar__item--popup">
                         <div class="popup__category">
                             <h3>Hàng mới về</h3>
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="header__navBar__item">TRẺ EM
+                <li class="header__navBar__item"><a href="./category.html">TRẺ EM</a>
                     <div class="header__navBar__item--popup">
                         <div class="popup__category">
                             <h3>Hàng mới về</h3>
@@ -161,7 +161,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="header__navBar__item">BỘ SƯU TẬP
+                <li class="header__navBar__item"><a href="./category.html">BỘ SƯU TẬP</a>
                     <div class="header__navBar__item--popup">
                         <div class="popup__category">
                             <h3>Nữ</h3>
@@ -216,7 +216,7 @@
                     </div>
                 </li>
             </ul>
-            <a href="" class='header__logo'>
+            <a href="./index.html" class='header__logo'>
                 <img  src="https://pubcdn.ivymoda.com/ivy2/images/logo.png" alt="">
             </a>
             <div class="header__subNav">
@@ -338,16 +338,6 @@
 
         </footer>
     </div>
-    <script>  
-        const cart = document.querySelector('.header__cart--popup')
-        const closeBtn = document.querySelector('.header__cart--popup--header .fa-xmark')
-        const showCart = document.querySelector('.fa-bag-shopping')
-        showCart.addEventListener('click', () => {
-            cart.style.transform = 'translateX(0)'
-        })
-        closeBtn.addEventListener('click', () => {
-            cart.style.transform = 'translateX(390px)'
-        })
-    </script>
+    <script src="./access/javascript/cart.js"></script>
 </body>
 </html>

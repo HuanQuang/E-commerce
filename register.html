@@ -16,7 +16,7 @@
 <body>
     <Header class="header">
         <ul class="header__navBar">
-            <li class="header__navBar__item">NAM
+            <li class="header__navBar__item"><a href="./category.html">NAM</a>
                 <div class="header__navBar__item--popup">
                     <div class="popup__category">
                         <h3>METAGEN</h3>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </li>
-            <li class="header__navBar__item">NỮ
+            <li class="header__navBar__item"><a href="./category.html">NỮ</a>
                 <div class="header__navBar__item--popup">
                     <div class="popup__category">
                         <h3>Hàng mới về</h3>
@@ -127,7 +127,7 @@
                     </div>
                 </div>
             </li>
-            <li class="header__navBar__item">TRẺ EM
+            <li class="header__navBar__item"><a href="./category.html">TRẺ EM</a>
                 <div class="header__navBar__item--popup">
                     <div class="popup__category">
                         <h3>Hàng mới về</h3>
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </li>
-            <li class="header__navBar__item">BỘ SƯU TẬP
+            <li class="header__navBar__item"><a href="./category.html">BỘ SƯU TẬP</a>
                 <div class="header__navBar__item--popup">
                     <div class="popup__category">
                         <h3>Nữ</h3>
@@ -215,7 +215,7 @@
                 </div>
             </li>
         </ul>
-        <a href="" class='header__logo'>
+        <a href="./index.html" class='header__logo'>
             <img  src="https://pubcdn.ivymoda.com/ivy2/images/logo.png" alt="">
         </a>
         <div class="header__subNav">
@@ -253,7 +253,9 @@
                             <h2>Giỏ hàng <span>0</span></h2>
                             <i class="fa-solid fa-xmark"></i>
                         </div>
-                        <div class="header__cart--popup--body"></div>
+                        <div class="header__cart--popup--body">
+                            
+                        </div>
                         <div class="header__cart--popup--login">Đăng nhập</div>
                     </div>
                 </div>
@@ -411,58 +413,48 @@
 
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script >
-        const cart = document.querySelector('.header__cart--popup')
-        const closeBtn = document.querySelector('.header__cart--popup--header .fa-xmark')
-        const showCart = document.querySelector('.fa-bag-shopping')
-        showCart.addEventListener('click', () => {
-            cart.style.transform = 'translateX(0)'
-        })
-        closeBtn.addEventListener('click', () => {
-            cart.style.transform = 'translateX(390px)'
-        })
-    </script>
+    <script src="./access/javascript/cart.js"></script>
     <script>
         var citis = document.getElementById("city");
-    var districts = document.getElementById("district");
-    var wards = document.getElementById("ward");
-    var Parameter = {
-      url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
-      method: "GET", 
-      responseType: "application/json", 
-    };
-    var promise = axios(Parameter);
-    promise.then(function (result) {
-      renderCity(result.data);
-    });
-    
-    function renderCity(data) {
-      for (const x of data) {
-        citis.options[citis.options.length] = new Option(x.Name, x.Id);
-      }
-      citis.onchange = function () {
-        district.length = 1;
-        ward.length = 1;
-        if(this.value != ""){
-          const result = data.filter(n => n.Id === this.value);
-    
-          for (const k of result[0].Districts) {
-            district.options[district.options.length] = new Option(k.Name, k.Id);
-          }
+        var districts = document.getElementById("district");
+        var wards = document.getElementById("ward");
+        var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
+        method: "GET", 
+        responseType: "application/json", 
+        };
+        var promise = axios(Parameter);
+        promise.then(function (result) {
+        renderCity(result.data);
+        });
+        
+        function renderCity(data) {
+        for (const x of data) {
+            citis.options[citis.options.length] = new Option(x.Name, x.Id);
         }
-      };
-      district.onchange = function () {
-        ward.length = 1;
-        const dataCity = data.filter((n) => n.Id === citis.value);
-        if (this.value != "") {
-          const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-    
-          for (const w of dataWards) {
-            wards.options[wards.options.length] = new Option(w.Name, w.Id);
-          }
+        citis.onchange = function () {
+            district.length = 1;
+            ward.length = 1;
+            if(this.value != ""){
+            const result = data.filter(n => n.Id === this.value);
+        
+            for (const k of result[0].Districts) {
+                district.options[district.options.length] = new Option(k.Name, k.Id);
+            }
+            }
+        };
+        district.onchange = function () {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === citis.value);
+            if (this.value != "") {
+            const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+        
+            for (const w of dataWards) {
+                wards.options[wards.options.length] = new Option(w.Name, w.Id);
+            }
+            }
+        };
         }
-      };
-    }
-        </script>
+    </script>
 </body>
 </html>
