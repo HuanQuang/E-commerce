@@ -9,9 +9,11 @@ const urlKid = "https://e-commerce-sever-huanquang.vercel.app/api/dotreem"
 const getManList = document.querySelector('.header__navBar__item.manBtn')
 const getWomanList = document.querySelector('.header__navBar__item.womanBtn')
 const getKidList = document.querySelector('.header__navBar__item.kidBtn')
+const countProduct = document.querySelector('.header__cart--popup--header span')
 const cartProduct = [...JSON.parse(localStorage.getItem('cart')) || []];
 
-
+countProduct.innerHTML = cartProduct.reduce((a,b)=> a + b.qty, 0)
+renderCart()
 // open Cart modal
 showSelect.forEach((showBtn, index) => {
     showBtn.addEventListener('click', ()  => {
@@ -72,10 +74,61 @@ getKidList.addEventListener('click', () => {
 // Add product to Cart
 function addToCard(id){
     const data = JSON.parse(localStorage.getItem('product'))
-    let product = data.find(item => item._id === id)
-    cartProduct.push(product)
+    const product = data.find(item => item._id === id)
+    const checkCartCurent = cartProduct.some(item => item._id === product._id)
+    // check xem có hàng trong giỏ chưa. nếu có khi mua thêm sẽ tăng số lượng, không thì sẽ add vào lần đầu
+    if(checkCartCurent){
+        const objIndex = cartProduct.findIndex(item => item._id === product._id);
+        cartProduct[objIndex].qty += 1
+    }
+    else {
+        product.qty = 1
+        cartProduct.push(product)
+    }
     localStorage.setItem('cart', JSON.stringify(cartProduct))
-    
+    // Số lượng trong giỏ hàng
+    countProduct.innerHTML = cartProduct.reduce((a,b)=> a + b.qty, 0)
+    renderCart()
+}
+//  Hiển thị các sản phẩm tại giao diện Cart
+function renderCart(){
+    const html = cartProduct.map(item => {
+        return (`<div class="header__cart--popup--body--item">
+                    <img src="${item.imgMain}" alt="img">
+                    <div class="header__cart--popup--body--item--content">
+                        <p class="header__cart--popup--body--item--content--name">${item.name}</p>
+                        <p class="header__cart--popup--body--item--content--color">Màu sắc: <span>${item.color}</span></p>
+                        <div class="header__cart--popup--body--item--content--pay">
+                            <div class="quality">
+                                <i class="fa-solid fa-plus" onclick="decreaseProduct('${item._id}')"></i>
+                                <span>${item.qty}</span>
+                                <i class="fa-solid fa-minus" onclick="reduceProduct('${item._id}')"></i>
+                            </div>
+                            <p class="price"><span>${item.price*item.qty}</span>₫</p>
+                        </div>
+                    </div>
+                </div>`)
+    })
+    document.querySelector('.header__cart--popup--body').innerHTML = html.join('')
 }
 
-
+function decreaseProduct(id){
+    const objIndex = cartProduct.findIndex(item => item._id === id)
+    cartProduct[objIndex].qty += 1
+    localStorage.setItem('cart', JSON.stringify(cartProduct))
+    // Số lượng trong giỏ hàng
+    countProduct.innerHTML = cartProduct.reduce((a,b)=> a + b.qty, 0)
+    renderCart()
+}
+function reduceProduct(id){
+    const objIndex = cartProduct.findIndex(item => item._id === id)
+    if(cartProduct[objIndex].qty === 1){
+        cartProduct.splice(objIndex, 1)
+    }else {
+        cartProduct[objIndex].qty -= 1
+    }
+    localStorage.setItem('cart', JSON.stringify(cartProduct))
+    // Số lượng trong giỏ hàng
+    countProduct.innerHTML = cartProduct.reduce((a,b)=> a + b.qty, 0)
+    renderCart()
+}
