@@ -1,9 +1,9 @@
 const dot1 = document.querySelector('.content__slider--dot--item.first')
 const dot2 = document.querySelector('.content__slider--dot--item.second')
 const slider = document.querySelector('.content__slider--wrap')
-const urlWomen = 'https://e-commerce-sever-huanquang.vercel.app/api/donu'
-const urlMen = 'https://e-commerce-sever-huanquang.vercel.app/api/donam'
-const urlKid = 'https://e-commerce-sever-huanquang.vercel.app/api/dotreem'
+// const urlWomen = 'https://e-commerce-sever-huanquang.vercel.app/api/donu'
+// const urlMen = 'https://e-commerce-sever-huanquang.vercel.app/api/donam'
+// const urlKid = 'https://e-commerce-sever-huanquang.vercel.app/api/dotreem'
 dot1.addEventListener('click', () => {
     slider.style.transform = 'translateX(0)';
     dot1.classList.add('active');
@@ -71,7 +71,7 @@ const tabs = document.querySelectorAll('.trending__tab--item')
 const content = document.querySelectorAll('.trending__list')
 // Call APi render list
 getList(urlWomen, content[0])
-getList(urlMen, content[1])
+getList(urlMan, content[1])
 getList(urlKid, content[2])
 
 

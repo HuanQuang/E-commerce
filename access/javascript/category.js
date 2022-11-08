@@ -111,7 +111,7 @@ function renderCart(){
     })
     document.querySelector('.header__cart--popup--body').innerHTML = html.join('')
 }
-
+// Tăng giảm số lượng trong giỏ hàng
 function decreaseProduct(id){
     const objIndex = cartProduct.findIndex(item => item._id === id)
     cartProduct[objIndex].qty += 1
