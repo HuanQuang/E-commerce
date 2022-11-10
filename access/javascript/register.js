@@ -17,7 +17,7 @@ registerBtn.addEventListener('click', async(e) => {
     .then((response) => {
         if(response.data === 'Đăng kí thành công'){
             alert(response.data)
-            setTimeout(() => window.location.href = '/login.html', 2000)
+            setTimeout(() => window.location.href = './login.html', 2000)
         } else if(response.data === 'Tài khoản đã tồn tại') {
                 alert(response.data)
         } else alert('Đăng kí thất bại, lỗi server')
