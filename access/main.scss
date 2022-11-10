@@ -117,8 +117,48 @@
             align-items: center;
             .header__subNav__option--item {
                 margin: 0 5px;
+                position: relative;
                 i {
                     color: #383737;
+                }
+                &--popup {
+                    position: absolute;
+                    transform-origin: 140px -20px;
+                    animation: popup 0.3s ease-in;
+                    background-color: white;
+                    position: absolute;
+                    top: 20px;
+                    border-radius: 4px;
+                    width: max-content;
+                    right: -38px;
+                    display: none;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                    color: #292525dc;
+                    font-size: 14px;
+                    &--item {
+                        padding: 5px 16px;
+                        line-height: 24px;
+                        span {
+                            color: red;
+                        }
+                        &:nth-child(1){
+                            padding-top: 8px;
+                            border-radius: 4px 4px 0;
+                        }
+                        &:nth-child(2){
+                            padding-bottom: 8px;
+                            border-radius: 0 0 4px 4px;
+
+                        }
+                        &:hover {
+                            background-color: rgba(128, 128, 128, 0.432);
+                        }
+                    }
+
+
+                }
+                &:hover .header__subNav__option--item--popup {
+                    display: block;
                 }
             }
 
@@ -352,6 +392,7 @@
                         font-weight: 400;
                         margin-bottom: 10px;
                         text-align: initial;
+                        height: 32px;
                     }
                     &--cart {
                         display: flex;
@@ -395,8 +436,7 @@
                 color: #221F20;
             }
             &:hover {
-                color: white;
-                background-color: #1a1818;
+                background-color: #1a18183b;
             }
         }
     }

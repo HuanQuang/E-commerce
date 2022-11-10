@@ -1,9 +1,8 @@
 const dot1 = document.querySelector('.content__slider--dot--item.first')
 const dot2 = document.querySelector('.content__slider--dot--item.second')
 const slider = document.querySelector('.content__slider--wrap')
-// const urlWomen = 'https://e-commerce-sever-huanquang.vercel.app/api/donu'
-// const urlMen = 'https://e-commerce-sever-huanquang.vercel.app/api/donam'
-// const urlKid = 'https://e-commerce-sever-huanquang.vercel.app/api/dotreem'
+
+
 dot1.addEventListener('click', () => {
     slider.style.transform = 'translateX(0)';
     dot1.classList.add('active');
@@ -83,3 +82,4 @@ tabs.forEach((tab, index) => {
         content[index].classList.add('active')
     }
 })
+

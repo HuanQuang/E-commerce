@@ -243,8 +243,15 @@
                 <div class="header__subNav__option--item">
                     <i class="fa-solid fa-headphones"></i>
                 </div>
-                <a href="./login.html" class="header__subNav__option--item">
+                <a class="header__subNav__option--item privatePageBtn">
                     <i class="fa-solid fa-user"></i>
+                    <div class="header__subNav__option--item--popup hide">
+                        <div class="header__subNav__option--item--popup--item">Xin chào! 
+                            <span class="header__subNav__option--item--popup--item--nameUser"></span>
+                        </div>
+                        
+                        <div class="header__subNav__option--item--popup--item logout">LogOut</div>
+                    </div>
                 </a>
                 <div class="header__subNav__option--item header__cart">
                     <i class="fa-solid fa-bag-shopping"></i>
@@ -364,14 +371,14 @@
             <div class="category__content--product">
                 <div class="category__content--product--header">
                     <h2>Hàng mới về</h2>
-                    <select name="" id="">
+                    <select name="" id="selectProduct">
                         <option value="">Sắp xếp theo</option>
-                        <option value="">Mặc định</option>
-                        <option value="">Mới nhất</option>
-                        <option value="">Được mua nhiều nhất</option>
-                        <option value="">Được yêu thích nhất</option>
-                        <option value="">Giá: Cao đến thấp</option>
-                        <option value="">Giá: Thấp đến cao</option>
+                        <option value="1">Mặc định</option>
+                        <option value="2">Mới nhất</option>
+                        <option value="3">Được mua nhiều nhất</option>
+                        <option value="4">Được yêu thích nhất</option>
+                        <option value="5">Giá: Cao đến thấp</option>
+                        <option value="6">Giá: Thấp đến cao</option>
                     </select>
                 </div>
                 <div class="category__content--product--list">
@@ -379,12 +386,8 @@
                     </div>
                     
                     <ul class="category__content--product--list--pagination">
-                        <li><a href="">«</a></li>
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li><a href="">»</a></li>
+
+               
                     </ul>
                 </div>
             </div>

@@ -243,8 +243,15 @@
                 <div class="header__subNav__option--item">
                     <i class="fa-solid fa-headphones"></i>
                 </div>
-                <a href="./login.html" class="header__subNav__option--item">
+                <a class="header__subNav__option--item privatePageBtn">
                     <i class="fa-solid fa-user"></i>
+                    <div class="header__subNav__option--item--popup hide">
+                        <div class="header__subNav__option--item--popup--item">Xin chào! 
+                            <span class="header__subNav__option--item--popup--item--nameUser"></span>
+                        </div>
+                        
+                        <div class="header__subNav__option--item--popup--item logout">LogOut</div>
+                    </div>
                 </a>
                 <div class="header__subNav__option--item header__cart">
                     <i class="fa-solid fa-bag-shopping"></i>
@@ -264,37 +271,37 @@
     </Header>
     <div class="content__register">
         <h2 class="content__register--title">ĐĂNG KÍ</h2>
-        <form action="submit" class="content__register--form">
+        <form id="form--register" class="content__register--form">
             <div class="content__register--form__infor">
                 <h4 class="content__register--form__infor--title">Thông tin khách hàng</h3>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Họ: <span>*</span>
+                        Họ: <span></span>
                         <input type="text" placeholder="Họ...">
                     </div>
                     <div class="customer__infor--row--item">
-                        Tên: <span>*</span>
+                        Tên: <span></span>
                         <input type="text" placeholder="Tên...">
                     </div>
                 </div>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Email: <span>*</span>
+                        Email: <span></span>
                         <input type="email" placeholder="Email...">
                     </div>
                     <div class="customer__infor--row--item">
-                        Điện thoại: <span>*</span>
+                        Điện thoại: <span></span>
                         <input type="tel" placeholder="Điện thoại...">
                     </div>
                 </div>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Ngày sinh: <span>*</span>
-                        <input type="text" placeholder="Ngày sinh...">
+                        Tuổi: <span>*</span>
+                        <input class="ageRegister" type="number" max="100" min="6" required>
                     </div>
                     <div class="customer__infor--row--item">
                         Giới tính: <span>*</span>
-                        <select placeholder="Giới tính">
+                        <select placeholder="Giới tính" id="selectGender" aria-valuenow="">
                             <option value="Nam">Nam</option>
                             <option value="Nữ">Nữ</option>
                         </select>
@@ -302,13 +309,13 @@
                 </div>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Tỉnh/TP: <span>*</span>
+                        Tỉnh/TP: <span></span>
                         <select name="" id="city" >
                             <option value=""  selected>Chọn Tỉnh/Tp</option>
                         </select>
                     </div>
                     <div class="customer__infor--row--item">
-                        Quận/Huyện: <span>*</span>
+                        Quận/Huyện: <span></span>
                         <select name="" id="district" >
                             <option value="" selected>Chọn Quận/Huyện</option>
                         </select>
@@ -316,7 +323,7 @@
                 </div>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Phường/Xã: <span>*</span>
+                        Phường/Xã: <span></span>
                         <select name="" id="ward" >
                             <option value="" selected>Chọn Phường/Xã</option>
                         </select>
@@ -325,7 +332,7 @@
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
                         Địa Chỉ: <span>*</span>
-                       <input type="text">
+                       <input type="text" required>
                     </div>
                 </div>
             </div>
@@ -333,14 +340,14 @@
                 <h4 class="content__register--form__infor--title">Thông tin mật khẩu</h4>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Mật khẩu: <span>*</span>
-                        <input type="password" placeholder="Mật khẩu...">
+                        Tài khoản: <span>*</span>
+                        <input class="userRegister" required type="text" placeholder="Tài khoản...">
                     </div>
                 </div>
                 <div class="customer__infor--row">
                     <div class="customer__infor--row--item">
-                        Nhập lại mật khẩu: <span>*</span>
-                        <input type="password" placeholder="Nhập lại mật khẩu...">
+                        Mật khẩu: <span>*</span>
+                        <input class="passwordRegister" required type="password" placeholder="Mật khẩu...">
                     </div>
                 </div>
                 <div class="customer__infor--row">
@@ -415,6 +422,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="./access/javascript/cart.js"></script>
     <script src="./access/javascript/category.js"></script>
+    <script src="./access/javascript/register.js"></script>
     <script>
         var citis = document.getElementById("city");
         var districts = document.getElementById("district");

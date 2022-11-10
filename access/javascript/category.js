@@ -11,6 +11,8 @@ const getWomanList = document.querySelector('.header__navBar__item.womanBtn')
 const getKidList = document.querySelector('.header__navBar__item.kidBtn')
 const countProduct = document.querySelector('.header__cart--popup--header span')
 const cartProduct = [...JSON.parse(localStorage.getItem('cart')) || []];
+const searchInput = document.querySelector('.header__subNav--search input')
+const selectProduct = document.getElementById('selectProduct')
 
 countProduct.innerHTML = cartProduct.reduce((a,b)=> a + b.qty, 0)
 renderCart()
@@ -28,40 +30,71 @@ rangePrice.onchange = function(e){
     currentPrice.innerHTML = `${e.target.value}đ`
 }
 
-
+let currentPage = 1
+let itemPerPage = 12
+let totalPage = 0
+let dataPerPage = []
+let data = []
 // Get data from API back - end
-async function getdata(url){
-    const data = await fetch(url) 
-                .then((response) => response.json())
-                .then(data => data);
- 
-    const html = data.map(product => {
+function handleSelectPage(index){
+    currentPage = index
+    dataPerPage = data.slice(
+        (currentPage - 1) * itemPerPage, 
+        (currentPage - 1) * itemPerPage + itemPerPage
+        )
+        renderListfromApi()
+}
+function renderListfromApi(){
+    const html = dataPerPage.map(product => {
         return (
             `<a class="category__content--product--list--wrap--item">
-            <img class="img-main" src="${product.imgMain}" alt="img">
-            <img class="img-lazy" src="${product.imgSub}" alt="img">
-            <div class="category__content--product--list--wrap--item--information">
-                <div class="option">
-                    <span class="color">${product.color}</span>
-                    <i class="fa-regular fa-heart"></i>
+                <img class="img-main" src="${product.imgMain}" alt="img">
+                <img class="img-lazy" src="${product.imgSub}" alt="img">
+                <div class="category__content--product--list--wrap--item--information">
+                    <div class="option">
+                        <span class="color">${product.color}</span>
+                        <i class="fa-regular fa-heart"></i>
+                    </div>
+                    <h3 class="name">${product.name}</h3>
+                    <div class="cart">
+                        <span class="price">${product.price}đ</span>
+                        <i class="fa-solid fa-bag-shopping" onclick ="addToCard('${product._id}')"></i>
+                    </div>
                 </div>
-                <h3 class="name">${product.name}</h3>
-                <div class="cart">
-                    <span class="price">${product.price}đ</span>
-                    <i class="fa-solid fa-bag-shopping" onclick ="addToCard('${product._id}')"></i>
-                </div>
-            </div>
             </a>`
         )
        
     })
-    localStorage.setItem('product', JSON.stringify(data))
     listItem.innerHTML = html.join('')
-
 }
 
+async function getdata(url){
+    currentPage = 1
+    data = await fetch(url) 
+                .then((response) => response.json())
+                .then(data => data);
+    localStorage.setItem('product', JSON.stringify(data))
+    
+    totalPage =  Math.ceil(data.length / itemPerPage)
+    renderPageBtn()
+    dataPerPage = data.slice(
+        (currentPage - 1) * itemPerPage, 
+        (currentPage - 1) * itemPerPage + itemPerPage
+    )
+    renderListfromApi()
+    function renderPageBtn(){
+        const pagination = document.querySelector('.category__content--product--list--pagination')
+        let htmlPaginate = []       
+        for (let i = 1; i <= totalPage; i++){
+            htmlPaginate += `<li onclick="handleSelectPage(${i})"><div>${i}</div></li>`
+            pagination.innerHTML = htmlPaginate
+        }
+    }
+   
+}
 // option list render on category
-getdata(urlWomen)
+window.addEventListener('onload', getdata(urlMan))
+
 getManList.addEventListener('click', () => {
     getdata(urlMan)
 })
@@ -111,7 +144,7 @@ function renderCart(){
     })
     document.querySelector('.header__cart--popup--body').innerHTML = html.join('')
 }
-// Tăng giảm số lượng trong giỏ hàng
+// Tăng giảm số lượng trong giỏ hàng 
 function decreaseProduct(id){
     const objIndex = cartProduct.findIndex(item => item._id === id)
     cartProduct[objIndex].qty += 1
@@ -131,4 +164,16 @@ function reduceProduct(id){
     // Số lượng trong giỏ hàng
     countProduct.innerHTML = cartProduct.reduce((a,b)=> a + b.qty, 0)
     renderCart()
+}
+// Tìm kiếm sản phẩm theo từ khoá
+searchInput.oninput = (e) => {
+    const searchValue = e.target.value.trim().toLowerCase()
+    const list = document.querySelectorAll('.category__content--product--list--wrap--item .name')
+    list.forEach(item => {  
+        if(!item.innerText.trim().toLowerCase().includes(searchValue)){
+            item.parentElement.parentElement.classList.add('hide')
+        }else {
+            item.parentElement.parentElement.classList.remove('hide')
+        }
+    }) 
 }
