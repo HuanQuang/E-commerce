@@ -3,7 +3,7 @@
 }
 .header {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 1;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -568,6 +568,16 @@
         transform: scale(1);
         opacity: 1;
     }
+}
+.swiper {
+    height: fit-content;
+    max-height: 250px;
+}
+.swiper-slide {
+    display: block;
+    width: 169px;
+    height: 100%;
+    object-fit: cover;
 }
 @media screen and (max-width: 768px) {
     .header {

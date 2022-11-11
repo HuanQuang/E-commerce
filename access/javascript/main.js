@@ -1,8 +1,7 @@
 const dot1 = document.querySelector('.content__slider--dot--item.first')
 const dot2 = document.querySelector('.content__slider--dot--item.second')
 const slider = document.querySelectorAll('.content__slider--wrap')
-const menuNav = document.querySelector('.fa-bars')
-const closeMenuNav = document.querySelector('.header__navBar .fa-xmark')
+
 
 dot1.addEventListener('click', () => {
     slider.forEach(item => {
@@ -89,10 +88,3 @@ tabs.forEach((tab, index) => {
     }
 })
 
-// mở menu mobile
-menuNav.addEventListener('click', () => {
-    document.querySelector('.header__navBar').style.transform = 'translateX(0)'
-})
-closeMenuNav.addEventListener('click', () => {
-    document.querySelector('.header__navBar').style.transform = 'translateX(-390px)'
-})

@@ -71,3 +71,10 @@
         }
     }
 }
+@media screen and (max-width: 768px) {
+    .content {
+        &__section:nth-child(2){
+            display: none;
+        }
+    }
+}
