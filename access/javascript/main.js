@@ -1,15 +1,21 @@
 const dot1 = document.querySelector('.content__slider--dot--item.first')
 const dot2 = document.querySelector('.content__slider--dot--item.second')
-const slider = document.querySelector('.content__slider--wrap')
-
+const slider = document.querySelectorAll('.content__slider--wrap')
+const menuNav = document.querySelector('.fa-bars')
+const closeMenuNav = document.querySelector('.header__navBar .fa-xmark')
 
 dot1.addEventListener('click', () => {
-    slider.style.transform = 'translateX(0)';
+    slider.forEach(item => {
+        item.style.transform = 'translateX(0)';
+    })
     dot1.classList.add('active');
     dot2.classList.remove('active')
 })
 dot2.addEventListener('click', () => {
-    slider.style.transform = 'translateX(-100%)';
+    slider.forEach(item => {
+        item.style.transform = 'translateX(-100%)';
+    })
+    // slider.style.transform = 'translateX(-100%)';
     dot2.classList.add('active');
     dot1.classList.remove('active')
 })
@@ -83,3 +89,10 @@ tabs.forEach((tab, index) => {
     }
 })
 
+// mở menu mobile
+menuNav.addEventListener('click', () => {
+    document.querySelector('.header__navBar').style.transform = 'translateX(0)'
+})
+closeMenuNav.addEventListener('click', () => {
+    document.querySelector('.header__navBar').style.transform = 'translateX(-390px)'
+})
