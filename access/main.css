@@ -443,6 +443,8 @@
 }
 .content__ads {
   margin-top: 28px;
+  width: 100%;
+  overflow-x: hidden;
 }
 .content__ads--slider {
   transition: all 1s;
